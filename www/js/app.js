@@ -50,32 +50,37 @@ angular.module('starter', [
   .config(function ( $stateProvider, $sceProvider, $urlRouterProvider) {
 
   $stateProvider
-    // .state('home', {
-    //   url: '/', 
-    //   templateUrl: 'js/views/auth.html', 
-    //   controller: 'AuthController',
-    //   // authenticate: true
-    // })
+    .state('home', {
+      url: '/', 
+      templateUrl: 'js/views/auth.html', 
+      controller: 'AuthController',
+      // authenticate: true
+    })
     .state('tab', {
-    url: "/tab",
-    abstract: true,
-    templateUrl: "js/views/tabs.html"
+      url: '',
+      abstract: true,
+      templateUrl: 'js/views/tabs.html'
     })
-    .state('tab.dash', {
-      url: '/dash',
+    .state('tab.profile', {
+      url: '/profile/:id',
       views: {
-        'tab-dash': {
-          templateUrl: 'js/views/dash.html',
-          controller: 'DashCtrl'
+        'tab.profile': {
+          templateUrl: 'js/views/profile.html', 
+          controller: 'ProfileController',
         }
-      }
+      } 
+      // authenticate: true
     })
-    // .state('profile', {
-    //   url: '/profile/:id', 
-    //   templateUrl: 'js/views/profile.html', 
-    //   controller: 'ProfileController',
-    //   // authenticate: true
-    // })
+    .state('portfolio', {
+      url: '/portfolio/:id',
+      views:{
+        'tab.portfolio':{
+          templateUrl: 'js/views/portfolio.html', 
+          controller: 'PortfolioController',
+        }
+      } 
+      // authenticate: true
+    })
     // .state('buy', {
     //   url: '/buy', 
     //   templateUrl: 'js/views/buy.html', 
@@ -86,12 +91,6 @@ angular.module('starter', [
     //   url: '/sell', 
     //   templateUrl: 'js/views/sell.html', 
     //   controller: 'SellController',
-    //   // authenticate: true
-    // })
-    // .state('portfolio', {
-    //   url: '/portfolio/:id', 
-    //   templateUrl: 'js/views/portfolio.html', 
-    //   controller: 'PortfolioController',
     //   // authenticate: true
     // })
     .state('privacy',{

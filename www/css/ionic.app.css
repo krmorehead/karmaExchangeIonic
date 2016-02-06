@@ -9733,3 +9733,12 @@ a.button {
 .button.button-positive {
   border: 1px solid #8c6464;
   box-shadow: 2px 2px black; }
+
+.center {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  text-align: center; }
+
+h1.center {
+  margin-top: 35%; }

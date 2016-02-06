@@ -99,6 +99,16 @@ angular.module('app.services', [])
   }
 })
 
+.factory('Url', function() {
+  var url = "localhost:3000/"
+  return {
+    // add a question from ask
+    url: function() {
+      return url
+    }
+  }
+})
+
 .factory('Root', function ($http, $location, $rootScope) {
   return {
     addUserInfo: function(info) {

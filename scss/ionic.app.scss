@@ -26,3 +26,13 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 	border:1px solid rgb(140,100,100);
 	box-shadow:2px 2px black;
 }
+
+.center{
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  text-align: center;
+}
+h1.center{
+  margin-top: 35%
+}
