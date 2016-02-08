@@ -13,7 +13,8 @@ angular.module('starter', [
   'app.services', 
   'app.index', 
   'app.transactionHist',
-  'chart.js'
+  'chart.js',
+  'LocalStorageModule'
   ])
 
 

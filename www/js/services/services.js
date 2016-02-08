@@ -80,7 +80,7 @@ angular.module('app.services', [])
   }
 })
 
-.factory('Auth', function ($http, $location, $rootScope) {
+.factory('Auth', function ($http, $location, $rootScope, $window, localStorageService) {
   return {
     checkLoggedIn: function () {
       return $http({
@@ -96,9 +96,14 @@ angular.module('app.services', [])
           return false;
         }
       });
+    },
+    login: function(){
+
     }
+
   }
 })
+
 
 .factory('Root', function ($http, $location, $rootScope) {
   return {
@@ -227,3 +232,4 @@ angular.module('app.services', [])
     }
   }
 })
+
