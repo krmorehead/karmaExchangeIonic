@@ -2,7 +2,7 @@ angular.module('app.profile', [])
 
 	//<h3>Profile Controller</h3>
 
-.controller('ProfileController', function($scope, $location, User, Auth, Root, Scores, $mdDialog, FB) {
+.controller('ProfileController', function($scope, $location, User, Auth, Root, Scores, FB) {
 
   $scope.isUser = true;
   $scope.user;
@@ -13,6 +13,7 @@ angular.module('app.profile', [])
   $scope.scores = [[],[]];
   $scope.labels = [];
   $scope.wednesday = false;
+  console.log("profile")
   //Save the user id, included in the location path
 
   //Pass this userId to $scope.getUserData in order to get all data associated with user

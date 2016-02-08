@@ -1,7 +1,7 @@
 angular.module('app.portfolio', ["chart.js"])
 
   //<h3> Portfolio Controller </h3>
-.controller('PortfolioController', function($scope, $location, $mdDialog, Portfolio, Auth, Root, Scores, TransactionHist, User) {
+.controller('PortfolioController', function($scope, $location, Portfolio, Auth, Root, Scores, TransactionHist, User) {
   $scope.investments;
   $scope.clickedInvestment;
   $scope.loggedinUserInfo;
@@ -14,19 +14,18 @@ angular.module('app.portfolio', ["chart.js"])
   $scope.currentInvestmentsView = true;
   $scope.openTransactionsView = false;
   $scope.transactionHistoryView = false;
-
-  Auth.checkLoggedIn().then(function(boolean) {
-    if (boolean === false) {
-      $location.path('/')
-    } else {
-      $scope.loggedinUserInfo = Root.currentUserInfo.data;
-      // console.log("Is the id correct", $scope.loggedinUserInfo);
-      $scope.getTransactionHist(function(){
-        $scope.getInvestments($scope.loggedinUserInfo.id);
-      });
-      $scope.addLabels(30)
-    }
-  })
+  // Auth.checkLoggedIn().then(function(boolean) {
+  //   if (boolean === false) {
+  //     $location.path('/')
+  //   } else {
+  //     $scope.loggedinUserInfo = Root.currentUserInfo.data;
+  //     // console.log("Is the id correct", $scope.loggedinUserInfo);
+  //     $scope.getTransactionHist(function(){
+  //       $scope.getInvestments($scope.loggedinUserInfo.id);
+  //     });
+  //     $scope.addLabels(30)
+  //   }
+  // })
 
 
 //gets all current investments for the user

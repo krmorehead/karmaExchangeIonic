@@ -1,4 +1,5 @@
-var url = "localhost:3000";
+var url = "http://localhost:3000";
+
 angular.module('app.services', [])
 
 // Questions factory handles all requests to add, retrieve, or modify questions in the database
@@ -10,7 +11,7 @@ angular.module('app.services', [])
     getUser: function(id) {
       return $http({
         method: 'GET',
-        url: '/profile/' + id,
+        url:url + '/profile/' + id,
       })
       .then(function(res) {
         return res.data;
@@ -20,7 +21,7 @@ angular.module('app.services', [])
     getUserByPartial: function(partial){
       return $http({
         method: 'GET',
-        url: '/users/partial/' + partial,
+        url:url + '/users/partial/' + partial,
       })
       .then(function(res) {
         return res.data;
@@ -30,7 +31,7 @@ angular.module('app.services', [])
     getLeaderData: function() {
       return $http({
         method: 'GET',
-        url: '/leaders',
+        url:url + '/leaders',
       })
       .then(function(res) {
         console.log(res.data, 'res.data'); 
@@ -46,7 +47,7 @@ angular.module('app.services', [])
     getInvestments: function(id) {
       return $http({
         method: 'GET',
-        url: '/portfolio/' + id,
+        url:url + '/portfolio/' + id,
       })
       .then(function(res) {
         return res.data;
@@ -56,7 +57,7 @@ angular.module('app.services', [])
     addInvestment: function(investment) {
       return $http({
         method: 'POST',
-        url: '/profile/buy',
+        url:url + '/profile/buy',
         data: {investment: investment}
       })
     }
@@ -70,7 +71,7 @@ angular.module('app.services', [])
 
       return $http({
         method: 'GET',
-        url: '/trending',
+        url:url + '/trending',
       })
       .then(function(res) {
         return res.data;
@@ -84,7 +85,7 @@ angular.module('app.services', [])
     checkLoggedIn: function () {
       return $http({
         method: 'GET',
-        url: '/api/loggedin'
+        url:url + '/api/loggedin'
       })
       .then(function (user) {
         if (user.data.id) {
@@ -95,16 +96,6 @@ angular.module('app.services', [])
           return false;
         }
       });
-    }
-  }
-})
-
-.factory('Url', function() {
-  var url = "localhost:3000/"
-  return {
-    // add a question from ask
-    url: function() {
-      return url
     }
   }
 })
@@ -124,7 +115,7 @@ angular.module('app.services', [])
     addTransaction: function(transactionObj) {
       return $http({
         method: 'POST',
-        url: '/transaction/add',
+        url:url + '/transaction/add',
         data: {transactionObj: transactionObj}
       })
     },
@@ -132,7 +123,7 @@ angular.module('app.services', [])
     getTransactions: function(user_id) {
       return $http({
         method: 'GET', 
-        url: '/transaction/get/' + user_id
+        url:url + '/transaction/get/' + user_id
       })
       .then(function(res) {
         return res.data;
@@ -142,7 +133,7 @@ angular.module('app.services', [])
     getOpenUserTransactions: function(user_id){
       return $http({
         method: 'GET', 
-        url: '/transaction/queue/' + user_id
+        url:url + '/transaction/queue/' + user_id
       })
       .then(function(res) {
         return res.data;
@@ -153,7 +144,7 @@ angular.module('app.services', [])
       console.log('targetid', target_id, 'type', type);
       return $http({
         method: 'GET',
-        url: '/transaction/check/',
+        url:url + '/transaction/check/',
         params: {target_id: target_id, type: type}
       })
       .then(function(res) {
@@ -165,7 +156,7 @@ angular.module('app.services', [])
     makeTransaction: function(transactionObj) {
       return $http({
         method: 'POST',
-        url: '/transaction/make',
+        url:url + '/transaction/make',
         data: {transactionObj: transactionObj}
       })
     },
@@ -175,7 +166,7 @@ angular.module('app.services', [])
       
       return $http({
         method: 'POST', 
-        url: '/transaction/queue', 
+        url:url + '/transaction/queue', 
         data: {transactionObj: transactionObj}
       })
     },
@@ -184,7 +175,7 @@ angular.module('app.services', [])
     closeTransactionRequest: function(transactionObj, shareValue) {
       return $http({
         method: 'POST',
-        url: '/transaction/close',
+        url:url + '/transaction/close',
         data: {transactionObj: transactionObj, shareValue: shareValue}
       })
     },
@@ -193,7 +184,7 @@ angular.module('app.services', [])
     deleteOpenTransaction: function(transactionId){
       return $http({
         method: 'DELETE',
-        url: '/transaction/queue/delete/' + transactionId
+        url:url + '/transaction/queue/delete/' + transactionId
       })
     }
 
@@ -205,7 +196,7 @@ angular.module('app.services', [])
     getScores: function(id) {
       return $http({
         method: 'GET',
-        url: '/profile/score/month/' + id
+        url:url + '/profile/score/month/' + id
       })
       .then(function(res) {
         return res.data;
@@ -219,11 +210,20 @@ angular.module('app.services', [])
     test: function(id) {
       return $http({
         method: 'GET',
-        url: '/facebook/' + id
+        url:url + '/facebook/' + id
       })
       .then(function(res) {
         return res.data;
       })
+    }
+  }
+})
+
+.factory('Url', function() {
+  return {
+    // add a question from ask
+    url: function() {
+      return url
     }
   }
 })

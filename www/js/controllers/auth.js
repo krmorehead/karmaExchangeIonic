@@ -1,22 +1,10 @@
 angular.module('app.auth', [])
 
-.controller('AuthController', function ($scope, $location, Auth) {
-  $scope.test = "hello testing auth";
+.controller('AuthController', function ($scope, $location, Auth, Url) {
 
-
-  // Auth.checkLoggedIn().then(function(loggedIn) {
-  //   console.log(loggedIn,"what is logged in")
-  //   if (loggedIn === false) {
-  //     $location.path('/')
-  //   } else {
-  //     $location.path('/#/newsfeed')
-  //   }
-  // })
-  
-
-  // if (!Auth.isAuth()) {
-  //   $location.path('/signin');
-  // } else {
-  //   $scope.getQuestion();
-  // }
+  $scope.redirect = function(){
+    var authUrl = Url.url() + '/auth/facebook'
+    console.log(authUrl)
+    $location.path(authUrl)
+  }
 });

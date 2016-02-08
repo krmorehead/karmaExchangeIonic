@@ -50,31 +50,31 @@ angular.module('starter', [
   .config(function ( $stateProvider, $sceProvider, $urlRouterProvider) {
 
   $stateProvider
-    .state('home', {
-      url: '/', 
-      templateUrl: 'js/views/auth.html', 
-      controller: 'AuthController',
-      // authenticate: true
-    })
     .state('tab', {
       url: '',
       abstract: true,
       templateUrl: 'js/views/tabs.html'
     })
+    .state('login', {
+      url: '/', 
+      templateUrl: 'js/views/auth.html', 
+      controller: 'AuthController',
+      // authenticate: true
+    })
     .state('tab.profile', {
       url: '/profile/:id',
       views: {
-        'tab.profile': {
+        'profile': {
           templateUrl: 'js/views/profile.html', 
           controller: 'ProfileController',
         }
       } 
       // authenticate: true
     })
-    .state('portfolio', {
+    .state('tab.portfolio', {
       url: '/portfolio/:id',
       views:{
-        'tab.portfolio':{
+        'portfolio':{
           templateUrl: 'js/views/portfolio.html', 
           controller: 'PortfolioController',
         }
