@@ -1,4 +1,4 @@
-var url = "http://localhost:3000";
+var url = "127.0.0.1:3000";
 
 angular.module('app.services', [])
 
@@ -80,7 +80,10 @@ angular.module('app.services', [])
   }
 })
 
-.factory('Auth', function ($http, $location, $rootScope, $window, localStorageService) {
+.factory('Auth', function ($http, $location, $rootScope, $window, localStorageService, Url) {
+  var url = Url.url() + '/auth/facebook';
+  var logInWindow, token, hasToken, userId, hasUserId;
+
   return {
     checkLoggedIn: function () {
       return $http({
@@ -98,7 +101,13 @@ angular.module('app.services', [])
       });
     },
     login: function(){
-
+      logInWindow = $window.open(url, '_blank', 'location=no, toolbar=no, hidden=yes');
+      console.log("login", logInWindow)
+      // logInWindow.addEventListener('loadstart', function (event){
+      //   console.log(event)
+      //   loginWindow.close();
+      //   location.href = location.pathname;
+      // })
     }
 
   }
