@@ -1,6 +1,10 @@
 angular.module('app.auth', [])
 
-.controller('AuthController', function ($scope, $location, Auth, Url) {
+.controller('AuthController', function ($scope, $location, $window, Auth, Url) {
+
+  window.addEventListener("message", function(data){
+    console.log("got a message", data)
+  })
 
   $scope.fbLogin = function(){
     // var authUrl = Url.url() + '/auth/facebook'

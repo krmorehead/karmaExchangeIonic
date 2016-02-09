@@ -1,5 +1,4 @@
-var url = "127.0.0.1:3000";
-
+var url = "http://karmaexchange.io";
 angular.module('app.services', [])
 
 // Questions factory handles all requests to add, retrieve, or modify questions in the database
@@ -102,12 +101,19 @@ angular.module('app.services', [])
     },
     login: function(){
       logInWindow = $window.open(url, '_blank', 'location=no, toolbar=no, hidden=yes');
-      console.log("login", logInWindow)
-      // logInWindow.addEventListener('loadstart', function (event){
-      //   console.log(event)
-      //   loginWindow.close();
-      //   location.href = location.pathname;
-      // })
+      var origin = $window.location.origin
+      console.log(origin)
+      // var interval = setInterval(function(){
+          // console.log(logInWindow.origin)
+        // if(logInWindow.origin === url){
+        //   clearInterval(interval)
+        // }
+      // },50)
+      // setTimeout(function(){
+      //   logInWindow.close();
+      // },5000)
+      console.log(logInWindow.location, logInWindow)
+
     }
 
   }
