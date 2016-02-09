@@ -14,7 +14,7 @@ angular.module('starter', [
   'app.index', 
   'app.transactionHist',
   'chart.js',
-  'ngCordova',
+  'ngCordovaOauth',
   'LocalStorageModule'
   ])
 

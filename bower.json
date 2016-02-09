@@ -6,6 +6,7 @@
     "angular-chart.js": "~0.8.8"
   },
   "dependencies": {
-    "angular-local-storage": "^0.2.3"
+    "angular-local-storage": "^0.2.3",
+    "ng-cordova-oauth": "^0.2.2"
   }
 }
