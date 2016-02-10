@@ -1,4 +1,4 @@
-var url = "http://karmaexchange.io";
+var url = "http://localhost:3000";
 angular.module('app.services', [])
 
 // Questions factory handles all requests to add, retrieve, or modify questions in the database
@@ -80,18 +80,16 @@ angular.module('app.services', [])
 })
 
 .factory('Auth', function ($http, $location, $rootScope, $window, localStorageService, Url) {
-  var url = Url.url() + '/auth/facebook';
   var logInWindow, token, hasToken, userId, hasUserId;
 
   return {
     checkLoggedIn: function () {
       return $http({
         method: 'GET',
-        url:url + '/api/loggedin'
+        url:url + '/mobile/loggedin/' + $rootScope.token
       })
       .then(function (user) {
-        if (user.data.id) {
-          $rootScope.user = user;
+        if (user) {
           return true;
         } else {
           console.log("error authenticating user");
@@ -99,21 +97,11 @@ angular.module('app.services', [])
         }
       });
     },
-    login: function(){
-      logInWindow = $window.open(url, '_blank', 'location=no, toolbar=no, hidden=yes');
-      var origin = $window.location.origin
-      console.log(origin)
-      // var interval = setInterval(function(){
-          // console.log(logInWindow.origin)
-        // if(logInWindow.origin === url){
-        //   clearInterval(interval)
-        // }
-      // },50)
-      // setTimeout(function(){
-      //   logInWindow.close();
-      // },5000)
-      console.log(logInWindow.location, logInWindow)
-
+    login: function(access_token){
+      return $http({
+        method: "GET",
+        url: url + "/mobile/login/" + access_token
+      })
     }
 
   }
