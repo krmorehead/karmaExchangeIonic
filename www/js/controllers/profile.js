@@ -2,8 +2,7 @@ angular.module('app.profile', [])
 
 	//<h3>Profile Controller</h3>
 
-.controller('ProfileController', function($scope, $location, User, Auth, Root, Scores, FB) {
-
+.controller('ProfileController', function($scope, $location, $rootScope, User, Auth, Root, Scores, FB) {
   $scope.isUser = true;
   $scope.user;
   $scope.leaders;
@@ -13,7 +12,14 @@ angular.module('app.profile', [])
   $scope.scores = [[],[]];
   $scope.labels = [];
   $scope.wednesday = false;
-  console.log("profile")
+  // $scope.loggedinUserInfo = Root.currentUserInfo.data;
+
+  var currentPath = $location.path();
+  currentPath = currentPath.split("");
+  $scope.profileId = currentPath.splice(9).join("");
+  // $scope.getUserById($scope.profileId);
+  // $scope.addLabels(30);
+  // $scope.getScores();  
   //Save the user id, included in the location path
 
   //Pass this userId to $scope.getUserData in order to get all data associated with user
@@ -256,19 +262,4 @@ angular.module('app.profile', [])
     }
   }
 
-
-  Auth.checkLoggedIn().then(function(boolean) {
-    if (boolean === false) {
-      $location.path('/')
-    } else {
-      $scope.loggedinUserInfo = Root.currentUserInfo.data;
-
-      var currentPath = $location.path();
-      currentPath = currentPath.split("");
-      $scope.profileId = currentPath.splice(9).join("");
-      $scope.getUserById($scope.profileId);
-      $scope.addLabels(30);
-      $scope.getScores();
-    }
-  })
 });

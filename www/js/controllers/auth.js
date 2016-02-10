@@ -14,7 +14,7 @@ angular.module('app.auth', [])
     Auth.login(token).then(function(authResponse){
       $rootScope.token = authResponse.data.token
       $rootScope.user = authResponse.data.userObj
-      $state.go('tab.profile')
+      $location.path('/profile/' + $rootScope.user.id)
     })
     // "eyJhbGciOiJIUzI1NiJ9.MQ.KR6EJ6gj0cZYgFpMXzDBA-AKah6-tBJzNbpS4-mNBeY"
 

@@ -88,11 +88,10 @@ angular.module('app.services', [])
         method: 'GET',
         url:url + '/mobile/loggedin/' + $rootScope.token
       })
-      .then(function (user) {
-        if (user) {
+      .then(function (response) {
+        if (response.data.loggedin) {
           return true;
         } else {
-          console.log("error authenticating user");
           return false;
         }
       });

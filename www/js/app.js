@@ -13,6 +13,7 @@ angular.module('starter', [
   'app.services', 
   'app.index', 
   'app.transactionHist',
+  'app.tab',
   'chart.js',
   'ngCordovaOauth',
   'LocalStorageModule'
@@ -55,7 +56,8 @@ angular.module('starter', [
     .state('tab', {
       url: '',
       abstract: true,
-      templateUrl: 'js/views/tabs.html'
+      templateUrl: 'js/views/tabs.html',
+      controller: 'TabController'
     })
     .state('login', {
       url: '/', 
