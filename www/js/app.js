@@ -43,11 +43,12 @@ angular.module('starter', [
     // Configure all charts
     ChartJsProvider.setOptions({
       colours: ['#FF5252', '#00ff00'],
-      // responsive: false
+      responsive: false
     });
     // Configure all line charts
     ChartJsProvider.setOptions('Line', {
       // datasetFill: false
+      enableInteractivity : false
     });
   }])
   .config(function ( $stateProvider, $sceProvider, $urlRouterProvider) {

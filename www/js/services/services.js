@@ -111,6 +111,9 @@ angular.module('app.services', [])
   return {
     addUserInfo: function(info) {
       this.currentUserInfo = info;
+    },
+    stateChangeListener : function(method){
+      $rootScope.$on('$stateChangeStart', method)
     }
   }
 })

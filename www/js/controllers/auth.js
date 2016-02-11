@@ -16,18 +16,16 @@ angular.module('app.auth', [])
       $rootScope.user = authResponse.data.userObj
       $location.path('/profile/' + $rootScope.user.id)
     })
-    // "eyJhbGciOiJIUzI1NiJ9.MQ.KR6EJ6gj0cZYgFpMXzDBA-AKah6-tBJzNbpS4-mNBeY"
-
-    // setTimeout(function(){
-    //   Auth.checkLoggedIn().then(function(el){
-    //     console.log(el, "checked log in info")
-    //   })
-    // }, 1000)
 
     // var callbackURL = "http://localhost/callback"
     // $cordovaOauth.facebook('767594746706952', ['public_profile', 'user_friends', 'email', 'user_photos', 'user_posts']).then(function(result){
-    //     result.access_token
-    //     console.log(JSON.stringify(result))
+    //   result.access_token
+    //   console.log(JSON.stringify(result))
+    //     Auth.login(result.access_token).then(function(authResponse){
+    //       $rootScope.token = authResponse.data.token
+    //       $rootScope.user = authResponse.data.userObj
+    //       $location.path('/profile/' + $rootScope.user.id)        
+    //     })
     //   }, function(error) {
     // console.log(error);
     // });

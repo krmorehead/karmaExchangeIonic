@@ -9742,3 +9742,27 @@ a.button {
 
 h1.center {
   margin-top: 35%; }
+
+ion-content {
+  background-color: #eaeaea; }
+
+.tab.tab-positive {
+  border-right: 1px solid #8c6464; }
+
+.col {
+  height: 80px;
+  width: 20%;
+  text-align: center; }
+
+.table {
+  border: 1px solid gray;
+  box-shadow: 1px 0px;
+  background-color: white;
+  padding: 5px; }
+
+div.tableHeader > div.col {
+  background-color: #c8aaaa;
+  height: 50px; }
+
+div.col.name {
+  font-size: 75%; }
