@@ -11,7 +11,7 @@
             <h2> Name: {{user.name}} </h2>
             <h2> Market Value: {{user.currentScore}} </h2>
             <h2 ng-show = 'isUser'> Social Score: {{user.social}}</h2>
-              <button ng-click="clickBuy()" class="button button-positive button-small">Buy Shares
+              <button ng-click="clickBuy()" class="button button-positive button-small" ng-hide = "isUser">Buy Shares
               </button>
               <button ng-show="wednesday || isUser"ng-click="clickReport()" class="button button-positive button-small">
                 View Report

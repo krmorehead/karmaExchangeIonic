@@ -1,12 +1,17 @@
-<md-dialog ng-init="checkSharesAvail()">
-  <md-dialog-content>
+<ion-modal-view>
+  <ion-header-bar class = "bar-positive">
+    <h1 class="title">Buy Shares</h1>
+  </ion-header-bar>
+
+  <ion-content ng-init = "checkSharesAvail()">
    <div> 
-   	<p>How many shares would you like to buy?</p> I would like to buy <input ng-model="sharesToBuy"/> shares of {{profile.name}}
-   	</div>
+    <p>How many shares would you like to buy?</p> I would like to buy <input ng-model="sharesToBuy"/> shares of {{user.name}}
+    </div>
+    <div class = "button-bar">
+      <button ng-click="confirm()" class="button ion-ios-checkmark-outline" aria-label="Complete" ng-hide="revealOptions"></button>
 
-    <md-button ng-click="confirm()" class="md-primary" aria-label="Complete" ng-hide="revealOptions"> Confirm </md-button>
-
-    <md-button class="md-primary" ng-click="exit()" aria-label="Complete" ng-hide="revealOptions"> Cancel </md-button>
+      <button class="button ion-close-circled" ng-click="exit()" aria-label="Complete" ng-hide="revealOptions"> Cancel </button>
+    </div> 
     <p ng-show = "revealOptions">You have selected more shares than are currently available. You have the following options:</p>
  
     <p ng-show = "revealOptions"> You may choose to make a partial purchase of {{availableShares}} shares and allow the rest of your transaction to be completed upon market availability.</p>
@@ -15,15 +20,10 @@
 
     <p ng-show="revealOptions">Or you may cancel your request</p>
 
-    <md-button class="md-primary" ng-click="wait()" aria-label="Complete" ng-show="revealOptions"> Wait For Availability</md-button>
+    <button class="button button-positive button-small" ng-click="wait()" aria-label="Complete" ng-show="revealOptions"> Wait For Availability</button>
 
-    <md-button class="md-primary" ng-click="buyDirect()" aria-label="Complete" ng-show="revealOptions"> Buy From Karma Exchange</md-button>
+    <button class="button button-positive button-small" ng-click="buyDirect()" aria-label="Complete" ng-show="revealOptions"> Buy From Karma Exchange</button>
 
-    <md-button class="md-primary" ng-click="exit()" aria-label="Complete" ng-show="revealOptions"> Cancel Your Order</md-button>
-
-
-
-    
-  </md-dialog-content>
-
-</md-dialog>
+    <button class="button button-positive button-small" ng-click="exit()" aria-label="Complete" ng-show="revealOptions"> Cancel Your Order</button>
+  </ion-content>
+</ion-modal-view>

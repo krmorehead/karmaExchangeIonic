@@ -97,7 +97,6 @@ angular.module('app.portfolio', ["chart.js"])
     var hashedTransactions = {};
     TransactionHist.getOpenUserTransactions(user_id)
     .then(function(openTransactions){
-      console.log(openTransactions)
       for(var i = 0; i < openTransactions.length; i++){
         var target_id = openTransactions[i].target_id
         if(hashedTransactions[target_id]){
@@ -116,7 +115,6 @@ angular.module('app.portfolio', ["chart.js"])
           }
         })
       }
-      console.log(openTransactions)
       $scope.openTransactions = openTransactions;
     })
   }

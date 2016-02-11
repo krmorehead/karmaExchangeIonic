@@ -2,7 +2,7 @@ angular.module('app.profile', [])
 
 	//<h3>Profile Controller</h3>
 
-.controller('ProfileController', function($scope, $location, $rootScope, User, Auth, Root, Scores, FB) {
+.controller('ProfileController', function($scope, $location, $rootScope, $ionicModal, User, Auth, Root, Scores, FB) {
   $scope.isUser = false;
   $scope.user;
   $scope.scores = [[],[]];
@@ -14,6 +14,12 @@ angular.module('app.profile', [])
   currentPath = currentPath.split("/");
   $scope.profileId = currentPath[2]
 
+  //used in the buy modal
+  $scope.sharesToBuy;
+  $scope.availableShares;
+  $scope.availableSharesInfo;
+  $scope.revealOptions = false;
+  $scope.errorMessage = false;
   //Save the user id, included in the location path
 
   //Pass this userId to $scope.getUserData in order to get all data associated with user
@@ -99,15 +105,7 @@ angular.module('app.profile', [])
   }
 
   $scope.clickBuy = function() {
-    $mdDialog.show({
-      templateUrl: '../app/views/buy.html',
-      locals: {
-        profile: $scope.user
-      },
-      controller: BuyModalController
-    })
-      .then(function(clickedItem) {
-      })
+    $scope.openModal();
   }
 
   //Click on report function that takes user to the report modal
@@ -130,15 +128,32 @@ angular.module('app.profile', [])
       })
   }
 
-  function BuyModalController($scope, profile, TransactionHist, Portfolio, Socket, Scores) {
-
-    $scope.profile = profile;
-    $scope.sharesToBuy;
-    $scope.availableShares;
-    $scope.availableSharesInfo;
-    $scope.revealOptions = false;
-    $scope.errorMessage = false;
-
+  //<h3>Buy Modal Controller</h3>
+  //other than function invoked at the end of the page all following functions relate to the modal controllers.
+  $ionicModal.fromTemplateUrl('/js/views/buy.html', {
+    scope: $scope,
+    animation: 'slide-in-up'
+  }).then(function(buyModal) {
+    $scope.buyModal = buyModal;
+  });
+  $scope.openModal = function() {
+    $scope.buyModal.show();
+  };
+  $scope.closeModal = function() {
+    $scope.buyModal.hide();
+  };
+  //Cleanup the buyModal when we're done with it!
+  $scope.$on('$destroy', function() {
+    $scope.buyModal.remove();
+  });
+  // Execute action on hide buyModal
+  $scope.$on('buyModal.hidden', function() {
+    // Execute action
+  });
+  // Execute action on remove buyModal
+  $scope.$on('buyModal.removed', function() {
+    // Execute action
+  });
 
     $scope.confirm = function() {
       var transaction = {
@@ -252,7 +267,7 @@ angular.module('app.profile', [])
     $scope.exit = function() {
       $mdDialog.hide();
     }
-  }
+  
 
   //<h3> ReportModalController Function </h3>
   //This will include the logic to display all profile report details. These include: 
